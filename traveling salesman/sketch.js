@@ -1,41 +1,35 @@
 var cities = [];
-var currentCost;
-var minPath = [];
 var order = [];
-var count = 0;
-var cityNum = 100;
+var count = 0; // Initialize counter
+var cityNum = 100; // Number of nodes in the our graph representing cities
 var total = factorial(cityNum);
 var percent;
-var popSize = 100
-var population = [];
 var interval;
 var t1; // Begin time
+
 // Canva setup or init
 function setup() {
   createCanvas(500, 500);
 
   // Create the graph
   for (var i = 0; i < cityNum; i++) {
-    var vector = createVector(random(width / 10, width - 50), random(height / 10, height - 50)); // randommy populating cities
+    var vector = createVector(random(width / 10, width - 50), random(height / 10, height - 50)); // randomly populating cities
     cities[i] = vector;
     order[i] = i;
   }
-  minPath = initPath(cities, order);
 
-  console.log("minPath: " + minPath);
-  order[cityNum] = 0;
-
-  /*for (var i = 0; i < popSize; i++) {
+    /*for (var i = 0; i < popSize; i++) {
     population[i] = shuffle(order);
   }*/
-
-
-  minPath[cityNum] = 0;
+  
+  minPath = initPath(cities, order);
+  console.log("minPath: " + minPath);
+  
+  order[cityNum] = 0; // Closing the order path
+  minPath[cityNum] = 0; // Closing the minPath
   currentCost = pathCost(minPath);
-  t1 = new Date();
-  /*var wezza = initPath(cities, [0,1,2,3,4,5]);
-  console.log("WZZZA " + wezza);
-  */
+  t1 = new Date(); // Begin time
+ 
 }
 
 function draw() {
@@ -110,7 +104,7 @@ function draw() {
   interval = t2 - t1;
   text("Completed in " + interval + "ms", 10, height / 10, width);
   textSize(24);
-  text(nf(percent, 1, 6) + "% explored", 10, height - 20, width); // inaccurate if cityNum is more than 12 :[
+  text(nf(percent, 1, 6) + "% explored", 10, height - 20, width); // inaccurate if cityNum is more than 11 :[
 
 }
 
