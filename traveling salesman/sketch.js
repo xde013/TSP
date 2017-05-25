@@ -2,7 +2,7 @@ var cities = [];
 var order = [];
 var count = 0; // Initialize counter
 var cityNum = 100; // Number of nodes in the our graph representing cities
-var total = factorial(cityNum);
+var total = factorial(cityNum); // Total number of possible paths
 var percent;
 var interval;
 var t1; // Begin time
