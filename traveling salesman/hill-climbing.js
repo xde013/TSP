@@ -1,7 +1,7 @@
 var cities = [];
 var order = [];
 var count = 0; // Initialize counter
-var cityNum = 100; // Number of nodes in the our graph representing cities
+var cityNum = 30; // Number of nodes in the our graph representing cities
 var total = factorial(cityNum); // Total number of possible paths
 var percent;
 var interval;
@@ -18,10 +18,6 @@ function setup() {
     order[i] = i;
   }
 
-    /*for (var i = 0; i < popSize; i++) {
-    population[i] = shuffle(order);
-  }*/
-  
   minPath = initPath(cities, order);
   console.log("minPath: " + minPath);
   
@@ -78,22 +74,6 @@ function draw() {
     console.log(minPath);
     console.log("cost: " + d);
   }
-
-  // Testing 
-  /*if ( percent < 100) {
-    //order = shuffle(order);
-    order = swap(order, i, k);
-     console.log(order);
-    count++;
-    var d = pathCost(cities);
-        if ( d < currentCost) {       
-          currentCost = d;
-          minPath = order.slice();
-          console.log(currentCost);  
-          console.log(minPath); 
-          console.log("i =" + i + " , k =" + k);
-        }
-  }*/
 
   textSize(32);
   textAlign(CENTER);
@@ -164,40 +144,6 @@ function initPath(arr, order) {
   }
   return visited;
 }
-
-
-// Lexical order algorithm
-/*function nextOrder() {
-  count++;
-
-  // STEP 1 of the algorithm
-  var largestI = -1;
-  for (var i = 0; i < order.length - 1; i++) {
-    if (order[i] < order[i + 1]) {
-      largestI = i;
-    }
-  }
-  if (largestI == -1) {
-    noLoop();
-    console.log('finished');
-  }
-
-  // STEP 2
-  var largestJ = -1;
-  for (var j = 0; j < order.length; j++) {
-    if (order[largestI] < order[j]) {
-      largestJ = j;
-    }
-  }
-
-  // STEP 3
-  swap(order, largestI, largestJ);
-
-  // STEP 4: reverse from largestI + 1 to the end
-  var endArray = order.splice(largestI + 1);
-  endArray.reverse();
-  order = order.concat(endArray);
-}*/
 
 // n!
 function factorial(n) {
