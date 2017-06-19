@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.9/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.9/addons/p5.dom.min.js"></script>
+    <script src="simulated.js"></script>
+    
+    
+  <style> 
+  body {padding: 0; margin: 0;}
+  .btn {
+    position: fixed;
+    bottom: 10%;
+    left: 10%;
+    width: 100%;
+  }
+  .reload {
+    background-color: transparent;
+    border: 2px black solid;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.2s;
+    cursor: pointer;
+  }
+  .reload:hover {
+    
+    background-color: black;
+    color: white;
+  }
+   </style>
+  </head>
+  <body>
+    <div class="btn"> 
+        <button class="reload" onclick='location.reload()'>Generate Graph</button>
+    </div>
+    
+  </body>
+</html>
