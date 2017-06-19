@@ -6,7 +6,8 @@ var total = factorial(cityNum); // Total number of possible paths
 var percent;
 var interval;
 var t1; // Begin time
-
+var path = [];
+var fin;
 // Canva setup or init
 function setup() {
   createCanvas(500, 500);
@@ -25,11 +26,11 @@ function setup() {
   minPath[cityNum] = 0; // Closing the minPath
   currentCost = pathCost(minPath);
   t1 = new Date(); // Begin time
- 
+  path = order.slice();
 }
 
 function draw() {
-  frameRate(60);
+  frameRate(5);
   background(0);
   fill(255);
 
@@ -38,17 +39,19 @@ function draw() {
     ellipse(cities[i].x, cities[i].y, 8, 8);
   }
 
+
+  if ( !fin ) {
   stroke(255);
   strokeWeight(2);
   noFill();
-
-  // Real time tries
-  beginShape();
-  for (var i = 0; i < order.length; i++) {
-    var n = order[i];
-    vertex(cities[n].x, cities[n].y);
-  }
+    // Draw current best path
+    for (var i = 0; i < path.length; i++) {
+      var n = path[i];
+      vertex(cities[n].x, cities[n].y);
+    }
   endShape();
+  }
+
 
   stroke(0, 255, 0);
   strokeWeight(3);
@@ -62,7 +65,9 @@ function draw() {
   }
   endShape();
 
+ 
 
+  path = order.slice();
   order = next(minPath); // get the next improved path
   if (order) { // do not get the cost of path if order is not set!
     var d = pathCost(order);
@@ -117,6 +122,7 @@ function next(path) {
     return min;
   } else { // if no improvements are made min will be undefined => false then
     console.log("Finnished, byebye, bssalama elik");
+    fin = true;
     noLoop(); // exit from the draw() loop
     return; // to actually exit from the draw() loop..
   }
